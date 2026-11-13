@@ -1,12 +1,8 @@
-"use client";
-
-import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { projects, type Project } from "@/data/projects";
+import { projects } from "@/data/projects";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Glyph, type GlyphName } from "@/components/ui/Glyph";
-import { ProjectDialog } from "@/components/ui/ProjectDialog";
 import { ProjectMark } from "@/components/ui/ProjectMark";
 
 const cardTone = {
@@ -20,8 +16,6 @@ const tileTone = {
 };
 
 export function ProjectsSection() {
-  const [active, setActive] = useState<Project | null>(null);
-
   return (
     <section aria-labelledby="projects-heading" className="flex h-auto min-h-full flex-col px-[4.6vw] pt-[4.4vh] pb-28 min-[1180px]:h-full min-[1180px]:pb-[11vh]">
       <div className="grid items-end gap-6 min-[1180px]:grid-cols-[1.05fr_auto_0.95fr]">
@@ -38,9 +32,10 @@ export function ProjectsSection() {
       <ul className="mt-5 grid flex-1 content-center gap-4 min-[900px]:grid-cols-2">
         {projects.items.map((project) => (
           <li key={project.id} data-reveal="card">
-            <button
-              type="button"
-              onClick={() => setActive(project)}
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
               className={`group flex h-full w-full flex-col rounded-2xl border px-5 py-4 text-left transition-colors hover:border-ivory/40 ${cardTone[project.accent]}`}
             >
               <span className="flex items-start gap-3">
@@ -73,11 +68,10 @@ export function ProjectsSection() {
                   </span>
                 ))}
               </span>
-            </button>
+            </a>
           </li>
         ))}
       </ul>
-      {active ? <ProjectDialog project={active} onClose={() => setActive(null)} /> : null}
     </section>
   );
 }

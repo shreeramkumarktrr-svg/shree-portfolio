@@ -43,12 +43,12 @@ export function ContactSection() {
   return (
     <section
       aria-labelledby="contact-heading"
-      className="flex h-auto min-h-full flex-col justify-start px-[4.6vw] pt-[8vh] pb-28 min-[1180px]:h-full min-[1180px]:pb-[168px]"
+      className="flex h-auto min-h-full max-w-full flex-col justify-start overflow-x-clip px-5 pt-8 pb-32 min-[1180px]:h-full min-[1180px]:px-[4.6vw] min-[1180px]:pt-[8vh] min-[1180px]:pb-[168px]"
     >
-      <div className="grid flex-1 items-start gap-10 min-[1180px]:grid-cols-[0.95fr_1.05fr] min-[1180px]:gap-0">
-        <div className="relative min-[1180px]:pr-10">
+      <div className="grid w-full min-w-0 flex-1 items-start gap-9 min-[1180px]:grid-cols-[0.95fr_1.05fr] min-[1180px]:gap-0">
+        <div className="relative min-w-0 min-[1180px]:pr-10">
           <Eyebrow>{contact.eyebrow}</Eyebrow>
-          <div className="relative mt-4 max-w-[540px]">
+          <div className="relative mt-4 max-w-full min-[1180px]:max-w-[540px]">
             <DisplayHeading id="contact-heading" lines={contact.headline} size="lg" />
             <span data-reveal="media" className="pointer-events-none absolute top-[14%] left-[min(255px,48%)] hidden min-[1180px]:block">
               <PaperPlane />
@@ -62,24 +62,24 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div className="relative min-[1180px]:border-l min-[1180px]:border-ivory/15 min-[1180px]:pl-8">
-          <ul className="flex flex-col gap-3.5">
+        <div className="relative min-w-0 min-[1180px]:border-l min-[1180px]:border-ivory/15 min-[1180px]:pl-8">
+          <ul className="flex w-full min-w-0 flex-col gap-3">
             {contact.channels.map((channel) => {
               const inner = (
                 <>
-                  <span className={`grid size-[52px] shrink-0 place-items-center rounded-[14px] ${tileTone[channel.accent]}`}>
-                    <Glyph name={channel.icon as GlyphName} className="size-[22px]" />
+                  <span className={`grid size-11 shrink-0 place-items-center rounded-[12px] min-[1180px]:size-[52px] min-[1180px]:rounded-[14px] ${tileTone[channel.accent]}`}>
+                    <Glyph name={channel.icon as GlyphName} className="size-5 min-[1180px]:size-[22px]" />
                   </span>
-                  <span className="min-w-0 flex-1 pr-6">
-                    <span className="block text-[15px] font-semibold text-ivory">{channel.label}</span>
-                    <span className="mt-0.5 block truncate text-[13.5px] text-muted">{channel.value}</span>
+                  <span className="min-w-0 flex-1 pr-5">
+                    <span className="block text-[14.5px] font-semibold text-ivory min-[1180px]:text-[15px]">{channel.label}</span>
+                    <span className="mt-0.5 block truncate text-[12.5px] text-muted min-[1180px]:text-[13.5px]">{channel.value}</span>
                   </span>
                   <ArrowUpRight className="absolute top-3.5 right-3.5 size-4 text-faint" aria-hidden="true" />
                 </>
               );
-              const className = `relative flex items-center gap-4 rounded-[18px] border px-4 py-3.5 min-[1180px]:px-5 ${cardTone[channel.accent]}`;
+              const className = `relative flex w-full min-w-0 items-center gap-3 rounded-[16px] border px-3.5 py-3 min-[1180px]:gap-4 min-[1180px]:rounded-[18px] min-[1180px]:px-5 min-[1180px]:py-3.5 ${cardTone[channel.accent]}`;
               return (
-                <li key={channel.id} data-reveal="card">
+                <li key={channel.id} data-reveal="card" className="w-full min-w-0">
                   {channel.href ? (
                     <a
                       href={channel.href}
@@ -98,16 +98,16 @@ export function ContactSection() {
             })}
           </ul>
 
-          <ul className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-ivory/10 pt-5">
+          <ul className="mt-6 flex flex-col gap-3.5 border-t border-ivory/10 pt-5 min-[1180px]:flex-row min-[1180px]:flex-wrap min-[1180px]:items-center min-[1180px]:justify-between min-[1180px]:gap-4">
             {contact.traits.map((trait, index) => (
-              <li key={trait.id} data-reveal="card" className="flex items-center gap-3.5">
+              <li key={trait.id} data-reveal="card" className="flex min-w-0 items-center gap-3 min-[1180px]:gap-3.5">
                 {index > 0 ? (
                   <span aria-hidden="true" className="mr-1 hidden h-9 w-px bg-ivory/15 min-[1180px]:block" />
                 ) : null}
-                <span className="text-bright">
+                <span className="shrink-0 text-bright">
                   <Glyph name={trait.icon} className="size-5" />
                 </span>
-                <span className="max-w-[120px] text-[13px] leading-tight font-medium text-ivory">{trait.label}</span>
+                <span className="text-[13px] leading-tight font-medium text-ivory min-[1180px]:max-w-[120px]">{trait.label}</span>
               </li>
             ))}
           </ul>

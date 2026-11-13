@@ -18,6 +18,7 @@ export type Project = {
   description: string;
   accent: Accent;
   logo: string;
+  href: string;
   features: { label: string; icon: FeatureIcon }[];
 };
 
@@ -42,6 +43,7 @@ export const projects = {
         "Enterprise AI chatbot trained on organization data to deliver accurate, secure and contextual answers.",
       accent: "crimson",
       logo: "/images/cogent.png",
+      href: "https://cogentai.ai",
       features: [
         { label: "Knowledge Base", icon: "layers" },
         { label: "Integrations", icon: "share" },
@@ -56,6 +58,7 @@ export const projects = {
         "End-to-end recruitment platform to streamline hiring from requisition to offer.",
       accent: "forest",
       logo: "/images/karmik.svg",
+      href: "https://karmik.carnationinfotech.com",
       features: [
         { label: "Candidate Management", icon: "users" },
         { label: "Interview Scheduling", icon: "calendar" },
@@ -70,6 +73,7 @@ export const projects = {
         "Multi-language school management platform to simplify academic, administrative and parent engagement.",
       accent: "forest",
       logo: "/images/shikshan.png",
+      href: "https://shikshanapp.com",
       features: [
         { label: "Student & Staff Management", icon: "users" },
         { label: "Attendance", icon: "calendar" },
@@ -84,6 +88,7 @@ export const projects = {
         "Secure and compliant e-signature platform to create, send, and manage documents digitally.",
       accent: "crimson",
       logo: "/images/esignmate.png",
+      href: "https://esignmate.vercel.app",
       features: [
         { label: "Create & Send", icon: "pen" },
         { label: "Audit Trail", icon: "shield" },
