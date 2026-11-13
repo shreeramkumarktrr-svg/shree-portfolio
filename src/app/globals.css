@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --color-forest: #06110c;
+  --color-charcoal: #171717;
+  --color-crimson: #a31c1b;
+  --color-bright: #ff1418;
+  --color-ivory: #f5f2ee;
+  --color-muted: #c9c9c9;
+  --color-faint: #858585;
+}
+
+html,
+body {
+  height: 100%;
+  background: #06110c;
+}
+
+body {
+  overflow: hidden;
+}
+
+::selection {
+  background: #a31c1b;
+  color: #f5f2ee;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.menu-overlay {
+  animation: menu-in 0.28s ease;
+}
+
+.home-portrait {
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0, 0, 0, 0.45) 78%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0, 0, 0, 0.45) 78%, transparent 100%);
+}
+
+@media (min-width: 1180px) {
+  .home-portrait {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
