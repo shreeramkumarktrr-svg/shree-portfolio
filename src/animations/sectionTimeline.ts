@@ -21,17 +21,17 @@ export function enterStage(stage: HTMLElement) {
   const cards = nodes(stage, "card");
   const media = nodes(stage, "media");
 
-  gsap.set(stage, { clearProps: "opacity,transform" });
+  gsap.set(stage, { opacity: 1, x: 0, y: 0, clearProps: "opacity,transform" });
 
   if (prefersReducedMotion()) {
     clearStage(stage);
     return gsap.timeline();
   }
 
-  gsap.set(headings, { opacity: 0, y: 20 });
-  gsap.set(copy, { opacity: 0, y: 14 });
-  gsap.set(cards, { opacity: 0, y: 16 });
-  gsap.set(media, { opacity: 0, y: 10 });
+  if (headings.length) gsap.set(headings, { opacity: 0, y: 20 });
+  if (copy.length) gsap.set(copy, { opacity: 0, y: 14 });
+  if (cards.length) gsap.set(cards, { opacity: 0, y: 16 });
+  if (media.length) gsap.set(media, { opacity: 0, y: 10 });
 
   const done = "opacity,transform";
   const timeline = gsap.timeline();

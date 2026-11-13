@@ -17,9 +17,9 @@ const tileTone = {
   forest: "border border-[#3d9a6c]/80 bg-[#0c3022] text-[#e9fff4] shadow-[0_0_16px_rgba(24,140,80,0.3)]",
 };
 
-function PaperPlane() {
+function PaperPlane({ className = "h-[132px] w-[165px]" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 200 160" className="h-[132px] w-[165px]" aria-hidden="true" fill="none">
+    <svg viewBox="0 0 200 160" className={className} aria-hidden="true" fill="none">
       <path
         d="M10 152C44 144 70 126 78 104C84 88 72 76 60 82C48 90 58 106 76 100C94 94 106 74 124 58"
         stroke="#f5f2ee"
@@ -43,15 +43,18 @@ export function ContactSection() {
   return (
     <section
       aria-labelledby="contact-heading"
-      className="flex h-auto min-h-full max-w-full flex-col justify-start overflow-x-clip px-5 pt-8 pb-32 min-[1180px]:h-full min-[1180px]:px-[4.6vw] min-[1180px]:pt-[8vh] min-[1180px]:pb-[168px]"
+      className="box-border flex h-auto min-h-full w-full max-w-full flex-col justify-start overflow-x-clip px-5 pt-8 pb-28 min-[1180px]:h-full min-[1180px]:px-[4.6vw] min-[1180px]:pt-[clamp(36px,6.5vh,72px)] min-[1180px]:pb-[148px]"
     >
-      <div className="grid w-full min-w-0 flex-1 items-start gap-9 min-[1180px]:grid-cols-[0.95fr_1.05fr] min-[1180px]:gap-0">
+      <div className="grid w-full min-w-0 flex-1 items-start gap-8 min-[1180px]:grid-cols-[0.95fr_1.05fr] min-[1180px]:gap-0">
         <div className="relative min-w-0 min-[1180px]:pr-10">
           <Eyebrow>{contact.eyebrow}</Eyebrow>
-          <div className="relative mt-4 max-w-full min-[1180px]:max-w-[540px]">
+          <div className="relative mt-4 max-w-full pr-[112px] min-[1180px]:max-w-[540px] min-[1180px]:pr-0">
             <DisplayHeading id="contact-heading" lines={contact.headline} size="lg" />
-            <span data-reveal="media" className="pointer-events-none absolute top-[14%] left-[min(255px,48%)] hidden min-[1180px]:block">
-              <PaperPlane />
+            <span
+              data-reveal="media"
+              className="pointer-events-none absolute top-0 right-0 min-[1180px]:top-[14%] min-[1180px]:left-[min(255px,48%)] min-[1180px]:right-auto"
+            >
+              <PaperPlane className="h-[100px] w-[125px] min-[1180px]:h-[132px] min-[1180px]:w-[165px]" />
             </span>
           </div>
           <p data-reveal="copy" className="mt-5 max-w-[420px] text-[15px] leading-[1.65] text-muted">
@@ -67,12 +70,18 @@ export function ContactSection() {
             {contact.channels.map((channel) => {
               const inner = (
                 <>
-                  <span className={`grid size-11 shrink-0 place-items-center rounded-[12px] min-[1180px]:size-[52px] min-[1180px]:rounded-[14px] ${tileTone[channel.accent]}`}>
+                  <span
+                    className={`grid size-11 shrink-0 place-items-center rounded-[12px] min-[1180px]:size-[52px] min-[1180px]:rounded-[14px] ${tileTone[channel.accent]}`}
+                  >
                     <Glyph name={channel.icon as GlyphName} className="size-5 min-[1180px]:size-[22px]" />
                   </span>
                   <span className="min-w-0 flex-1 pr-5">
-                    <span className="block text-[14.5px] font-semibold text-ivory min-[1180px]:text-[15px]">{channel.label}</span>
-                    <span className="mt-0.5 block truncate text-[12.5px] text-muted min-[1180px]:text-[13.5px]">{channel.value}</span>
+                    <span className="block text-[14.5px] font-semibold text-ivory min-[1180px]:text-[15px]">
+                      {channel.label}
+                    </span>
+                    <span className="mt-0.5 block truncate text-[12.5px] text-muted min-[1180px]:text-[13.5px]">
+                      {channel.value}
+                    </span>
                   </span>
                   <ArrowUpRight className="absolute top-3.5 right-3.5 size-4 text-faint" aria-hidden="true" />
                 </>
@@ -100,14 +109,20 @@ export function ContactSection() {
 
           <ul className="mt-6 flex flex-col gap-3.5 border-t border-ivory/10 pt-5 min-[1180px]:flex-row min-[1180px]:flex-wrap min-[1180px]:items-center min-[1180px]:justify-between min-[1180px]:gap-4">
             {contact.traits.map((trait, index) => (
-              <li key={trait.id} data-reveal="card" className="flex min-w-0 items-center gap-3 min-[1180px]:gap-3.5">
+              <li
+                key={trait.id}
+                data-reveal="card"
+                className="flex min-w-0 items-center gap-3 min-[1180px]:gap-3.5"
+              >
                 {index > 0 ? (
                   <span aria-hidden="true" className="mr-1 hidden h-9 w-px bg-ivory/15 min-[1180px]:block" />
                 ) : null}
                 <span className="shrink-0 text-bright">
                   <Glyph name={trait.icon} className="size-5" />
                 </span>
-                <span className="text-[13px] leading-tight font-medium text-ivory min-[1180px]:max-w-[120px]">{trait.label}</span>
+                <span className="text-[13px] leading-tight font-medium text-ivory min-[1180px]:max-w-[120px]">
+                  {trait.label}
+                </span>
               </li>
             ))}
           </ul>

@@ -32,7 +32,7 @@ export function SiteShell() {
   );
 
   return (
-    <div className="relative h-dvh overflow-hidden bg-forest text-ivory">
+    <div className="relative flex h-dvh flex-col overflow-hidden bg-forest text-ivory">
       <BackgroundScene section={scene} />
       <Header
         section={section}
@@ -40,7 +40,10 @@ export function SiteShell() {
         menuOpen={menuOpen}
         onMenuToggle={() => setMenuOpen((open) => !open)}
       />
-      <main id="content" className="relative z-10 h-[calc(100dvh-78px)] overflow-x-clip overflow-y-auto min-[1180px]:overflow-hidden">
+      <main
+        id="content"
+        className="relative z-10 min-h-0 flex-1 overflow-x-clip overflow-y-auto min-[1180px]:overflow-hidden"
+      >
         <PortraitLayer section={section} scene={scene} />
         <SectionStage section={section} ready={ready} onShown={onShown}>
           {(shown) => (

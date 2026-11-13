@@ -19,7 +19,7 @@ export function Header({
   onMenuToggle,
 }: HeaderProps) {
   return (
-    <header className="relative z-30 flex h-[78px] items-center px-[4.7vw]">
+    <header className="relative z-30 flex h-[78px] shrink-0 items-center bg-forest px-[4.7vw]">
       <a
         href="#home"
         aria-label="Shree Ram Kumar, home"
